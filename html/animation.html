@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <style>
+        div {
+            margin: 25px;
+        }
+        .animation {
+            width: 100px;
+            height: 100px;
+            position: relative;
+            background: #f56951;
+            opacity: 0.5;
+            animation: myMove 5s infinite alternate;
+        }
+        @keyframes myMove {
+            from {
+                left: 0;
+            }
+            to {
+                left: 500px;
+            }
+        }
+        .transform {
+            width: 100px;
+            height: 100px;
+            position: relative;
+            background: #03a9f4;
+            opacity: 0.5;
+            transform: skewX(45deg);
+        }
+        .transition {
+            width: 100px;
+            height: 100px;
+            position: relative;
+            background: #1be0d3;
+            opacity: 0.5;
+            transition: width 2s;
+        }
+        .transition:hover {
+            width: 200px;
+        }
+    </style>
+    <body>
+        <div class="animation"></div>
+        <div class="transform"></div>
+        <div class="transition"></div>
+    </body>
+</html>

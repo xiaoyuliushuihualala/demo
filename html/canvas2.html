@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <canvas id="canvas" width="500" height="500"></canvas>
+</body>
+<script>
+    /*
+    fillStyle = color
+    设置图形的填充颜色。
+
+    strokeStyle = color
+    设置图形轮廓的颜色。
+
+    globalAlpha = transparencyValue
+    这个属性影响到 canvas 里所有图形的透明度，有效的值范围是 0.0 （完全透明）到 1.0（完全不透明），默认是 1.0。
+
+    lineWidth = value
+    设置线条宽度。
+
+    lineCap = type
+    设置线条末端样式。
+
+    lineJoin = type
+    设定线条与线条间接合处的样式。
+
+    miterLimit = value
+    限制当两条线相交时交接处最大长度；所谓交接处长度（斜接长度）是指线条交接处内角顶点到外角顶点的长度。
+
+    getLineDash()
+    返回一个包含当前虚线样式，长度为非负偶数的数组。
+
+    setLineDash(segments)   
+    设置当前虚线样式。
+
+    lineDashOffset = value
+    设置虚线样式的起始偏移量。
+
+    createLinearGradient()
+    创建线性渐变
+    
+    */
+    function drawWithColor () {
+        var ctx = document.getElementById('canvas').getContext('2d');
+        for (var i=0;i<6;i++){
+            for (var j=0;j<6;j++){
+            ctx.fillStyle = 'rgb(' + Math.floor(255-42.5*i) + ',' +
+                            Math.floor(255-42.5*j) + ',0)';
+            ctx.fillRect(j*25,i*25,25,25);
+            }
+        }
+    }
+
+    function drawWithOpcity() {
+        var ctx = document.getElementById('canvas').getContext('2d');
+        // 画背景
+        ctx.fillStyle = '#FD0';
+        ctx.fillRect(0,0,75,75);
+        ctx.fillStyle = '#6C0';
+        ctx.fillRect(75,0,75,75);
+        ctx.fillStyle = '#09F';
+        ctx.fillRect(0,75,75,75);
+        ctx.fillStyle = '#F30';
+        ctx.fillRect(75,75,75,75);
+        ctx.fillStyle = '#FFF';
+
+        // 设置透明度值
+        ctx.globalAlpha = 0.2;
+
+        // 画半透明圆
+        for (var i=0;i<7;i++){
+            ctx.beginPath();
+            ctx.arc(75,75,10+10*i,0,Math.PI*2,true);
+            ctx.fill();
+        }
+    }
+
+    function drawTran() {
+        var ctx = document.getElementById('canvas').getContext('2d');
+
+        // 画背景
+        ctx.fillStyle = 'rgb(255,221,0)';
+        ctx.fillRect(0,0,150,37.5);
+        ctx.fillStyle = 'rgb(102,204,0)';
+        ctx.fillRect(0,37.5,150,37.5);
+        ctx.fillStyle = 'rgb(0,153,255)';
+        ctx.fillRect(0,75,150,37.5);
+        ctx.fillStyle = 'rgb(255,51,0)';
+        ctx.fillRect(0,112.5,150,37.5);
+
+        // 画半透明矩形
+        for (var i=0;i<10;i++){
+            ctx.fillStyle = 'rgba(255,255,255,'+(i+1)/10+')';
+            for (var j=0;j<4;j++){
+            ctx.fillRect(5+i*14,5+j*37.5,14,27.5)
+            }
+        }
+    }
+
+    function drawLine() {
+        var ctx = document.getElementById('canvas').getContext('2d');
+        var lineCap = ['butt','round','square'];
+
+        // 创建路径
+        ctx.strokeStyle = '#09f';
+        ctx.beginPath();
+        ctx.moveTo(10,10);
+        ctx.lineTo(140,10);
+        ctx.moveTo(10,140);
+        ctx.lineTo(140,140);
+        ctx.stroke();
+
+        // 画线条
+        ctx.strokeStyle = 'black';
+        for (var i=0;i<lineCap.length;i++){
+            ctx.lineWidth = 15;
+            ctx.lineCap = lineCap[i];
+            ctx.beginPath();
+            ctx.moveTo(25+i*50,10);
+            ctx.lineTo(25+i*50,140);
+            ctx.stroke();
+        }
+    }
+
+    function Matchman () {
+        var ctx = document.getElementById('canvas').getContext('2d');
+        ctx.lineWidth = 2
+        ctx.beginPath()
+        ctx.arc(243, 198, 2, 0, Math.PI * 2, true)
+        ctx.arc(268, 198, 2, 0, Math.PI * 2, true)
+        ctx.fill()
+        ctx.arc(250, 200, 25, 0, Math.PI * 2, true)
+        ctx.stroke()
+
+        ctx.lineWidth = 5
+        ctx.moveTo(254, 225)
+        ctx.lineTo(254, 265)
+        ctx.stroke()
+
+        ctx.moveTo(254, 265)
+        ctx.lineTo(236, 308)
+
+        ctx.moveTo(254, 265)
+        ctx.lineTo(292, 308)
+
+        ctx.moveTo(254, 235)
+        ctx.lineTo(228, 254)
+
+        ctx.moveTo(254, 235)
+        ctx.lineTo(268, 254)
+
+        ctx.stroke()
+    }
+    
+    function lineDash () {
+        var ctx = document.getElementById('canvas').getContext('2d');
+        var offset = 0;
+
+        function draw() {
+        ctx.clearRect(0,0, canvas.width, canvas.height);
+        ctx.setLineDash([4, 2]);
+        ctx.lineDashOffset = -offset;
+        ctx.strokeRect(10,10, 100, 100);
+        }
+
+        function march() {
+        offset++;
+        if (offset > 16) {
+            offset = 0;
+        }
+        draw();
+        setTimeout(march, 20);
+        }
+
+        march();
+    }
+    
+    function drawSun () {
+        var sun = new Image();
+        var moon = new Image();
+        var earth = new Image();
+        function init(){
+        sun.src = 'https://mdn.mozillademos.org/files/1456/Canvas_sun.png';
+        moon.src = 'https://mdn.mozillademos.org/files/1443/Canvas_moon.png';
+        earth.src = 'https://mdn.mozillademos.org/files/1429/Canvas_earth.png';
+        window.requestAnimationFrame(draw);
+        }
+
+        function draw() {
+        var ctx = document.getElementById('canvas').getContext('2d');
+
+        ctx.globalCompositeOperation = 'destination-over';
+        ctx.clearRect(0,0,300,300); // clear canvas
+
+        ctx.fillStyle = 'rgba(0,0,0,0.4)';
+        ctx.strokeStyle = 'rgba(0,153,255,0.4)';
+        ctx.save();
+        ctx.translate(150,150);
+
+        // Earth
+        var time = new Date();
+        ctx.rotate( ((2*Math.PI)/60)*time.getSeconds() + ((2*Math.PI)/60000)*time.getMilliseconds() );
+        ctx.translate(105,0);
+        ctx.fillRect(0,-12,50,24); // Shadow
+        ctx.drawImage(earth,-12,-12);
+
+        // Moon
+        ctx.save();
+        ctx.rotate( ((2*Math.PI)/6)*time.getSeconds() + ((2*Math.PI)/6000)*time.getMilliseconds() );
+        ctx.translate(0,28.5);
+        ctx.drawImage(moon,-3.5,-3.5);
+        ctx.restore();
+
+        ctx.restore();
+
+        ctx.beginPath();
+        ctx.arc(150,150,105,0,Math.PI*2,false); // Earth orbit
+        ctx.stroke();
+
+        ctx.drawImage(sun,0,0,300,300);
+
+        window.requestAnimationFrame(draw);
+        }
+
+        init();
+    }
+
+</script>
+<style>
+    #canvas{
+        border: 1px solid #456745;
+    }
+</style>
+</html>

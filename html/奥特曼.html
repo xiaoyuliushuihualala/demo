@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+    <head>
+        <meta charset="UTF-8" />
+        <meta
+            name="viewport"
+            content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"
+        />
+        <title>s1pz的测试页面</title>
+
+        <style>
+            html,
+            body {
+                width: 100%;
+                height: 100%;
+                overflow: hidden;
+                background-color: #000;
+                margin: 0;
+                padding: 0;
+                display: flex;
+            }
+
+            .g-container {
+                position: relative;
+                perspective: 4px;
+                margin: auto;
+                animation: hueRotate 21s infinite linear;
+            }
+
+            .g-group {
+                position: absolute;
+                width: 2000px;
+                height: 2000px;
+                left: -1000px;
+                top: -1000px;
+                transform-style: preserve-3d;
+                animation: move 12s infinite linear;
+                animation-delay: 0;
+            }
+
+            .g-group:nth-child(2) {
+                animation-delay: -6s;
+            }
+
+            .g-item {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                background: url('https://z3.ax1x.com/2021/08/20/fLwuMd.jpg');
+                background-size: cover;
+                opacity: 1;
+                animation: fade 12s infinite linear;
+                animation-delay: 0;
+            }
+
+            .g-group:nth-child(2) .g-item {
+                animation-delay: -6s;
+            }
+
+            .g-item:nth-child(1) {
+                transform: rotateX(90deg) translateZ(1000px);
+            }
+
+            .g-item:nth-child(2) {
+                transform: rotateY(90deg) translateZ(1000px);
+            }
+
+            .g-item:nth-child(3) {
+                transform: rotateX(-90deg) translateZ(1000px);
+            }
+
+            .g-item:nth-child(4) {
+                transform: rotateY(-90deg) translateZ(1000px);
+            }
+
+            .g-item:nth-child(5) {
+                transform: rotateX(180deg) translateZ(1000px);
+            }
+
+            .img {
+                width: 0;
+                height: 0;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                animation: imgMove 12s infinite ease;
+                background: url('./img/aoteman.jpeg') no-repeat;
+                background-size: contain;
+            }
+
+            .img img {
+                width: 0;
+                height: 0;
+            }
+
+            @keyframes move {
+                0% {
+                    transform: translateZ(-1000px) rotate(0deg);
+                }
+
+                100% {
+                    transform: translateZ(1000px) rotate(0deg);
+                }
+            }
+
+            @keyframes fade {
+                0% {
+                    opacity: 0;
+                }
+
+                20%,
+                90% {
+                    opacity: 1;
+                }
+
+                100% {
+                    opacity: 0;
+                }
+            }
+
+            @keyframes hueRotate {
+                0% {
+                    filter: hue-rotate(0);
+                }
+
+                100% {
+                    filter: hue-rotate(360deg);
+                }
+            }
+
+            @keyframes imgMove {
+                0% {
+                    width: 0;
+                    height: 0;
+                    opacity: 1;
+                }
+                100% {
+                    width: 2000px;
+                    height: 2000px;
+                    opacity: 0;
+                }
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="g-container">
+            <div class="g-group">
+                <div class="g-item"></div>
+                <div class="g-item"></div>
+                <div class="g-item"></div>
+                <div class="g-item"></div>
+                <div class="g-item"></div>
+            </div>
+            <div class="g-group">
+                <div class="g-item"></div>
+                <div class="g-item"></div>
+                <div class="g-item"></div>
+                <div class="g-item"></div>
+                <div class="g-item"></div>
+            </div>
+            <div class="img">
+                <img src="./img/aoteman2.png" alt="" />
+            </div>
+        </div>
+    </body>
+</html>

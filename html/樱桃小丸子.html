@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<style type="text/css">
+			.main {
+				width: 500px;
+				height: 500px;
+				margin: 200px auto;
+			}
+
+			.triangle_border_down {
+				float: left;
+				width: 0;
+				height: 0;
+				border-width: 30px 30px 0;
+				border-style: solid;
+				border-color: #333333 transparent transparent;
+				/*灰 透明 透明 */
+			}
+
+			.liuhai {
+				width: 250px;
+				height: auto;
+				margin: 0 auto;
+				position: relative;
+				top: 140px;
+			}
+
+			.head {
+				background-color: #333333;
+				width: 360px;
+				/*宽度为高度的2倍*/
+				height: 300px;
+				position: relative;
+				border-radius: 200px 200px 0 0;
+				/*圆角半径为高度的值*/
+			}
+
+			.face {
+				background: #ffffff;
+				width: 240px;
+				/*宽度为高度的2倍*/
+				height: 200px;
+				border: 1px solid #333333;
+				border-radius: 0 0 200px 200px;
+				/*圆角半径为高度的值*/
+			}
+
+			.left {
+				width: 30px;
+				height: 60px;
+				/*高度为宽度的2倍*/
+				border-radius: 25px 0 0 25px;
+				/*圆角半径为宽度的值*/
+				background: #ffffff;
+				position: absolute;
+				left: -20px;
+				top: 60px;
+			}
+
+			.right {
+				height: 60px;
+				/*高度为宽度的2倍*/
+				width: 30px;
+				position: absolute;
+				right: -15px;
+				top: 60px;
+				border-radius: 0 25px 25px 0;
+				/*圆角半径为宽度的值*/
+				background: #ffffff;
+			}
+
+			.fl {
+				float: left;
+			}
+
+			.fr {
+				float: right;
+			}
+
+			.yes {
+				-webkit-animation: fade 5s ease infinite;
+				-moz-animation: fade 5s ease infinite;
+				animation: fade 5s ease infinite;
+			}
+
+			.yy {
+				margin-top: 10px;
+			}
+			.yes01 {
+				margin-left: 60px;
+			}
+			.yes02 {
+				margin-right: 60px;
+			}
+			.me {
+				width: 50px;
+				height: 20px;
+				border-top: 3px solid #333333;
+				border-radius: 20px 20px 0 0;
+			}
+			.meimao01 {
+				margin-left: 40px;
+			}
+			.meimao02 {
+				margin-right: 40px;
+			}
+			.yanjing {
+			}
+			.zui {
+				width: 70px;
+				height: 50px;
+				border-radius: 0 0 60px 60px;
+				background: red;
+				position: relative;
+				top: 84px;
+				left: 85px;
+			}
+			.hudei {
+				width: 0;
+				height: 0;
+				border-width: 50px 50px 0;
+				border-style: solid;
+				border-radius: 60px;
+				position: absolute;
+				right: 17px;
+				top: 5px;
+				transform: rotate(-35deg);
+				border-color: orangered transparent transparent;
+			}
+			.hud02 {
+				width: 0;
+				height: 0;
+				border-width: 50px 50px 0;
+				border-style: solid;
+				border-radius: 60px;
+				position: absolute;
+				right: -10px;
+				top: 40px;
+				transform: rotate(135deg);
+				border-color: orangered transparent transparent;
+			}
+			.yu {
+				width: 40px;
+				height: 40px;
+				border: 1px solid #ffffff;
+				background: orangered;
+				border-radius: 50px;
+				position: absolute;
+				right: 34px;
+				top: 23px;
+			}
+			.saihong {
+				background-color: rgb(224, 139, 136);
+				border-radius: 50%;
+				width: 25px;
+				height: 25px;
+			}
+			.left-saihong {
+				position: absolute;
+				left: 29px;
+				top: 64px;
+			}
+			.right-saihong {
+				position: absolute;
+				right: 29px;
+				top: 64px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="main">
+			<div class="head">
+				<div class="liuhai">
+					<div class="triangle_border_down"></div>
+					<div class="triangle_border_down"></div>
+					<div class="triangle_border_down"></div>
+					<div class="triangle_border_down"></div>
+					<div class="face">
+						<div class="mm clearfix">
+							<div class="meimao01 me fl"></div>
+							<div class="meimao02 me fr"></div>
+							<div class="saihong left-saihong"></div>
+						</div>
+						<div class="yy clearfix">
+							<div class="yes fl yes01"></div>
+							<div class="yes fr yes02"></div>
+							<div class="saihong right-saihong"></div>
+						</div>
+						<div class="zui"></div>
+					</div>
+					<div class="left"></div>
+					<div class="right"></div>
+				</div>
+				<div class="hudei"></div>
+				<div class="hud02"></div>
+				<div class="yu"></div>
+			</div>
+		</div>
+	</body>
+</html>

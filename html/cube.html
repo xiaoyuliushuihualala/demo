@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            .cube {
+                margin: 80px;
+                width: 120px;
+                height: 120px;
+                margin: 0 auto;
+                transform-style: preserve-3d;
+                transform: rotateX(-30deg) rotateY(-80deg);
+                animation: rotate linear 20s infinite;
+            }
+            @keyframes rotate {
+                0% {
+                    transform: rotateX(0deg) rotateY(0deg);
+                }
+                100% {
+                    transform: rotateX(360deg) rotateY(360deg);
+                }
+            }
+            .cube div {
+                position: absolute;
+                width: 120px;
+                height: 120px;
+                opacity: 0.8;
+                transition: all 0.4s;
+            }
+            .out_front {
+                transform: rotateY(0deg) translateZ(60px);
+            }
+            .out_back {
+                transform: translateZ(-60px) rotateY(180deg);
+            }
+            .out_left {
+                transform: rotateY(-90deg) translateZ(60px);
+            }
+            .out_right {
+                transform: rotateY(90deg) translateZ(60px);
+            }
+            .out_top {
+                transform: rotateX(90deg) translateZ(60px);
+            }
+            .out_bottom {
+                transform: rotateX(-90deg) translateZ(60px);
+            }
+        </style>
+    </head>
+    <body>
+        <div class="cube">
+            <div class="out_front">
+                <img
+                    src="https://files-cdn.cnblogs.com/files/cjsblog/cube01.bmp"
+                    alt=""
+                />
+            </div>
+            <div class="out_back">
+                <img
+                    src="https://files-cdn.cnblogs.com/files/cjsblog/cube02.bmp"
+                    alt=""
+                />
+            </div>
+            <div class="out_left">
+                <img
+                    src="https://files-cdn.cnblogs.com/files/cjsblog/cube03.bmp"
+                    alt=""
+                />
+            </div>
+            <div class="out_right">
+                <img
+                    src="	https://files-cdn.cnblogs.com/files/cjsblog/cube04.bmp"
+                    alt=""
+                />
+            </div>
+            <div class="out_top">
+                <img
+                    src="https://files-cdn.cnblogs.com/files/cjsblog/cube05.bmp"
+                    alt=""
+                />
+            </div>
+            <div class="out_bottom">
+                <img
+                    src="https://files-cdn.cnblogs.com/files/cjsblog/cube06.bmp"
+                    alt=""
+                />
+            </div>
+        </div>
+    </body>
+</html>
